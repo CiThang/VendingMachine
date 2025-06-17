@@ -1,0 +1,90 @@
+$date
+	Mon Jun 16 09:00:15 2025
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module total_amount_tb $end
+$var wire 5 ! current_amount [4:0] $end
+$var reg 1 " cancel $end
+$var reg 1 # clk $end
+$var reg 5 $ coin_value [4:0] $end
+$var reg 1 % rst_n $end
+$scope module uut $end
+$var wire 1 " cancel $end
+$var wire 1 # clk $end
+$var wire 5 & coin_value [4:0] $end
+$var wire 1 % rst_n $end
+$var reg 5 ' current_amount [4:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+b0 '
+b0 &
+0%
+b0 $
+0#
+0"
+b0 !
+$end
+#5000
+1#
+#10000
+0#
+b1 $
+b1 &
+1%
+#15000
+b1 !
+b1 '
+1#
+#20000
+0#
+b101 $
+b101 &
+#25000
+b110 !
+b110 '
+1#
+#30000
+0#
+b1010 $
+b1010 &
+#35000
+b10000 !
+b10000 '
+1#
+#40000
+0#
+1"
+#45000
+b0 !
+b0 '
+1#
+#50000
+0#
+b10 $
+b10 &
+0"
+#55000
+b10 !
+b10 '
+1#
+#60000
+0#
+b11 $
+b11 &
+#65000
+b101 !
+b101 '
+1#
+#70000
+0#

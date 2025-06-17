@@ -1,0 +1,307 @@
+$date
+	Tue Jun 17 08:26:27 2025
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module timer_tb $end
+$var wire 1 ! timeout_flag $end
+$var wire 5 " debug_counter [4:0] $end
+$var parameter 5 # TIME_CHANGE_RETURN $end
+$var parameter 5 $ TIME_PRODUCT_RETURN $end
+$var parameter 5 % TIME_WAIT_SELECT $end
+$var reg 1 & clk $end
+$var reg 1 ' rst_n $end
+$var reg 2 ( start_timer [1:0] $end
+$scope module uut $end
+$var wire 1 & clk $end
+$var wire 1 ' rst_n $end
+$var wire 2 ) start_timer [1:0] $end
+$var parameter 2 * CHANGE_RETURN $end
+$var parameter 2 + PRODUCT_RETURN $end
+$var parameter 5 , TIME_CHANGE_RETURN $end
+$var parameter 5 - TIME_PRODUCT_RETURN $end
+$var parameter 5 . TIME_WAIT_SELECT $end
+$var parameter 2 / WAIT_SELECT $end
+$var reg 5 0 counter [4:0] $end
+$var reg 5 1 debug_counter [4:0] $end
+$var reg 2 2 prev_mode [1:0] $end
+$var reg 1 3 running $end
+$var reg 1 ! timeout_flag $end
+$upscope $end
+$scope task test_mode $end
+$var reg 2 4 mode [1:0] $end
+$var reg 5 5 wait_time [4:0] $end
+$var integer 32 6 i [31:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b0 /
+b1010 .
+b100 -
+b11 ,
+b1 +
+b10 *
+b1010 %
+b100 $
+b11 #
+$end
+#0
+$dumpvars
+bx 6
+bx 5
+bx 4
+03
+b11 2
+b0 1
+b0 0
+b0 )
+b0 (
+0'
+0&
+b0 "
+0!
+$end
+#5000
+1&
+#10000
+0&
+#15000
+1&
+#20000
+0&
+b1010 5
+b0 4
+1'
+#25000
+b0 2
+13
+b1010 0
+1&
+#30000
+0&
+b0 6
+#35000
+b1010 "
+b1010 1
+b1001 0
+1&
+#40000
+0&
+b1 6
+#45000
+b1001 "
+b1001 1
+b1000 0
+1&
+#50000
+0&
+b10 6
+#55000
+b1000 "
+b1000 1
+b111 0
+1&
+#60000
+0&
+b11 6
+#65000
+b111 "
+b111 1
+b110 0
+1&
+#70000
+0&
+b100 6
+#75000
+b110 "
+b110 1
+b101 0
+1&
+#80000
+0&
+b101 6
+#85000
+b101 "
+b101 1
+b100 0
+1&
+#90000
+0&
+b110 6
+#95000
+b100 "
+b100 1
+b11 0
+1&
+#100000
+0&
+b111 6
+#105000
+b11 "
+b11 1
+b10 0
+1&
+#110000
+0&
+b1000 6
+#115000
+b10 "
+b10 1
+b1 0
+1&
+#120000
+0&
+b1001 6
+#125000
+b1 "
+b1 1
+b0 0
+1&
+#130000
+0&
+b1010 6
+#135000
+b0 "
+b0 1
+03
+1!
+1&
+#140000
+0&
+b1011 6
+#145000
+1&
+#150000
+0&
+b1100 6
+#155000
+1&
+#160000
+0&
+b1 (
+b1 )
+b100 5
+b1 4
+b1101 6
+#165000
+b1 2
+13
+0!
+b100 0
+1&
+#170000
+0&
+b0 6
+#175000
+b100 "
+b100 1
+b11 0
+1&
+#180000
+0&
+b1 6
+#185000
+b11 "
+b11 1
+b10 0
+1&
+#190000
+0&
+b10 6
+#195000
+b10 "
+b10 1
+b1 0
+1&
+#200000
+0&
+b11 6
+#205000
+b1 "
+b1 1
+b0 0
+1&
+#210000
+0&
+b100 6
+#215000
+b0 "
+b0 1
+03
+1!
+1&
+#220000
+0&
+b101 6
+#225000
+1&
+#230000
+0&
+b110 6
+#235000
+1&
+#240000
+0&
+b10 (
+b10 )
+b11 5
+b10 4
+b111 6
+#245000
+b10 2
+13
+0!
+b11 0
+1&
+#250000
+0&
+b0 6
+#255000
+b11 "
+b11 1
+b10 0
+1&
+#260000
+0&
+b1 6
+#265000
+b10 "
+b10 1
+b1 0
+1&
+#270000
+0&
+b10 6
+#275000
+b1 "
+b1 1
+b0 0
+1&
+#280000
+0&
+b11 6
+#285000
+b0 "
+b0 1
+03
+1!
+1&
+#290000
+0&
+b100 6
+#295000
+1&
+#300000
+0&
+b101 6
+#305000
+1&
+#310000
+0&
+b110 6

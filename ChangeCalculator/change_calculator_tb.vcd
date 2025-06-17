@@ -1,0 +1,173 @@
+$date
+	Tue Jun 17 10:01:51 2025
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module change_calculator_tb $end
+$var wire 5 ! change_out [4:0] $end
+$var wire 1 " change_dispense_done $end
+$var reg 1 # change_dispense_en $end
+$var reg 1 $ clk $end
+$var reg 5 % current_amount_display [4:0] $end
+$var reg 5 & product_price [4:0] $end
+$var reg 1 ' rst_n $end
+$var reg 1 ( single_change_calculator $end
+$scope module uut $end
+$var wire 1 # change_dispense_en $end
+$var wire 1 $ clk $end
+$var wire 5 ) current_amount_display [4:0] $end
+$var wire 5 * product_price [4:0] $end
+$var wire 1 ' rst_n $end
+$var wire 1 ( single_change_calculator $end
+$var reg 1 " change_dispense_done $end
+$var reg 5 + change_out [4:0] $end
+$upscope $end
+$scope task run_test $end
+$var reg 128 , desc [127:0] $end
+$var reg 5 - money [4:0] $end
+$var reg 5 . price [4:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+bx .
+bx -
+bx ,
+b0 +
+b0 *
+b0 )
+0(
+0'
+b0 &
+b0 %
+0$
+0#
+0"
+b0 !
+$end
+#5000
+1$
+#10000
+0$
+#15000
+1$
+#20000
+0$
+1#
+1(
+b1111 &
+b1111 *
+b10100 %
+b10100 )
+b100000011100110110100001101111011101010110110001100100001000000111001001100101011101000111010101110010011011100010000000110101 ,
+b1111 .
+b10100 -
+1'
+#25000
+1"
+b101 !
+b101 +
+1$
+#30000
+0$
+#35000
+1$
+#40000
+0$
+0(
+0#
+#45000
+0"
+1$
+#50000
+0$
+1#
+1(
+b101 &
+b101 *
+b11001 %
+b11001 )
+b1110011011010000110111101110101011011000110010000100000011100100110010101110100011101010111001001101110001000000011001000110000 ,
+b101 .
+b11001 -
+#55000
+1"
+b10100 !
+b10100 +
+1$
+#60000
+0$
+#65000
+1$
+#70000
+0$
+0(
+0#
+#75000
+0"
+1$
+#80000
+0$
+1#
+1(
+b1010 &
+b1010 *
+b1010 %
+b1010 )
+b100000011100110110100001101111011101010110110001100100001000000111001001100101011101000111010101110010011011100010000000110000 ,
+b1010 .
+b1010 -
+#85000
+1"
+b0 !
+b0 +
+1$
+#90000
+0$
+#95000
+1$
+#100000
+0$
+0(
+0#
+#105000
+0"
+1$
+#110000
+0$
+1#
+1(
+b1000 %
+b1000 )
+b100000011011010110111101101110011001010111100100101100001000000111001001100101011101000111010101110010011011100010000000110000 ,
+b1000 -
+#115000
+1$
+#120000
+0$
+#125000
+1$
+#130000
+0$
+0(
+0#
+#135000
+1$
+#140000
+0$
+#145000
+1$
+#150000
+0$
+#155000
+1$
+#160000
+0$
