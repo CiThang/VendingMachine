@@ -1,0 +1,144 @@
+$date
+	Tue Jun 17 16:10:01 2025
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module status_display_tb $end
+$var wire 8 ! status_display [7:0] $end
+$var wire 4 " led_indicators [3:0] $end
+$var reg 1 # cancel $end
+$var reg 1 $ change_dispense_done $end
+$var reg 1 % clk $end
+$var reg 1 & display_status_en $end
+$var reg 1 ' product_dispense_done $end
+$var reg 1 ( rst_n $end
+$var reg 3 ) state_out [2:0] $end
+$scope module uut $end
+$var wire 1 # cancel $end
+$var wire 1 $ change_dispense_done $end
+$var wire 1 % clk $end
+$var wire 1 & display_status_en $end
+$var wire 1 ' product_dispense_done $end
+$var wire 1 ( rst_n $end
+$var wire 3 * state_out [2:0] $end
+$var parameter 3 + pDISPENSE_CHANGE $end
+$var parameter 3 , pIDLE $end
+$var parameter 3 - pRETURN_MONEY $end
+$var parameter 3 . pSELECT_PRODUCT $end
+$var parameter 3 / pWAIT_COIN $end
+$var reg 4 0 led_indicators [3:0] $end
+$var reg 8 1 status_display [7:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b1 /
+b10 .
+b100 -
+b0 ,
+b11 +
+$end
+#0
+$dumpvars
+b0 1
+b0 0
+b0 *
+b0 )
+0(
+0'
+0&
+0%
+0$
+0#
+b0 "
+b0 !
+$end
+#5000
+1%
+#10000
+0%
+1&
+1(
+#15000
+b1 "
+b1 0
+b1001001 !
+b1001001 1
+1%
+#20000
+0%
+b1 )
+b1 *
+#25000
+b10 "
+b10 0
+b1010111 !
+b1010111 1
+1%
+#30000
+0%
+b10 )
+b10 *
+#35000
+1%
+#40000
+0%
+1'
+#45000
+b11 "
+b11 0
+b1010011 !
+b1010011 1
+1%
+#50000
+0%
+b11 )
+b11 *
+#55000
+1%
+#60000
+0%
+1$
+#65000
+b101 "
+b101 0
+b1000011 !
+b1000011 1
+1%
+#70000
+0%
+b100 )
+b100 *
+#75000
+1%
+#80000
+0%
+1#
+#85000
+b0 "
+b0 0
+b0 !
+b0 1
+1%
+#90000
+0%
+#95000
+1%
+#100000
+0%
+#105000
+1%
+#110000
+0%
+b10 )
+b10 *
+0&
+#115000
+1%
+#120000
+0%
