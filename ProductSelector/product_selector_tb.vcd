@@ -1,0 +1,210 @@
+$date
+	Wed Jun 18 20:47:44 2025
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module product_selector_tb $end
+$var wire 1 ! product_selector_done $end
+$var wire 5 " product_price [4:0] $end
+$var wire 2 # product_out [1:0] $end
+$var reg 1 $ clk $end
+$var reg 2 % product_sel [1:0] $end
+$var reg 1 & product_selector_en $end
+$var reg 1 ' rst_n $end
+$var reg 1 ( timeout_flag $end
+$scope module uut $end
+$var wire 1 $ clk $end
+$var wire 2 ) product_sel [1:0] $end
+$var wire 1 & product_selector_en $end
+$var wire 1 ' rst_n $end
+$var wire 1 ( timeout_flag $end
+$var parameter 5 * PRICE_A $end
+$var parameter 5 + PRICE_B $end
+$var parameter 5 , PRICE_C $end
+$var parameter 2 - PRODUCT_A $end
+$var parameter 2 . PRODUCT_B $end
+$var parameter 2 / PRODUCT_C $end
+$var reg 2 0 product_out [1:0] $end
+$var reg 5 1 product_price [4:0] $end
+$var reg 1 ! product_selector_done $end
+$var reg 5 2 temp_product_price [4:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b11 /
+b10 .
+b1 -
+b11001 ,
+b10100 +
+b1111 *
+$end
+#0
+$dumpvars
+bx 2
+b0 1
+b0 0
+b0 )
+0(
+0'
+0&
+b0 %
+0$
+b0 #
+b0 "
+0!
+$end
+#5000
+1$
+#10000
+0$
+1'
+#15000
+1$
+#20000
+0$
+1&
+b1 %
+b1 )
+#25000
+1!
+b1111 2
+1$
+#30000
+0$
+0&
+#35000
+1$
+#40000
+0$
+1(
+#45000
+0!
+b1111 "
+b1111 1
+b1 #
+b1 0
+1$
+#50000
+0$
+0(
+#55000
+1$
+#60000
+0$
+#65000
+1$
+#70000
+0$
+1&
+b10 %
+b10 )
+#75000
+1!
+b10100 2
+1$
+#80000
+0$
+0&
+#85000
+1$
+#90000
+0$
+1(
+#95000
+0!
+b10100 "
+b10100 1
+b10 #
+b10 0
+1$
+#100000
+0$
+0(
+#105000
+1$
+#110000
+0$
+#115000
+1$
+#120000
+0$
+1&
+b11 %
+b11 )
+#125000
+1!
+b11001 2
+1$
+#130000
+0$
+0&
+#135000
+1$
+#140000
+0$
+1(
+#145000
+0!
+b11001 "
+b11001 1
+b11 #
+b11 0
+1$
+#150000
+0$
+#155000
+1$
+#160000
+0$
+#165000
+1$
+#170000
+0$
+0(
+#175000
+1$
+#180000
+0$
+#185000
+1$
+#190000
+0$
+1&
+b0 %
+b0 )
+#195000
+1!
+b0 2
+1$
+#200000
+0$
+0&
+#205000
+1$
+#210000
+0$
+1(
+#215000
+0!
+b0 "
+b0 1
+b0 #
+b0 0
+1$
+#220000
+0$
+0(
+#225000
+1$
+#230000
+0$
+#235000
+1$
+#240000
+0$

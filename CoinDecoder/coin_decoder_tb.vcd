@@ -1,5 +1,5 @@
 $date
-	Mon Jun 16 08:02:20 2025
+	Fri Jun 20 10:47:40 2025
 $end
 $version
 	Icarus Verilog
@@ -9,15 +9,18 @@ $timescale
 $end
 $scope module coin_decoder_tb $end
 $var wire 5 ! coin_value [4:0] $end
-$var reg 1 " clk $end
-$var reg 2 # coin_in [1:0] $end
-$var reg 1 $ rst_n $end
+$var wire 1 " coin_valid $end
+$var reg 1 # clk $end
+$var reg 2 $ coin_in [1:0] $end
+$var reg 1 % rst_n $end
 $scope module uut $end
-$var wire 1 " clk $end
-$var wire 2 % coin_in [1:0] $end
-$var wire 5 & coin_value [4:0] $end
-$var wire 1 $ rst_n $end
-$var reg 5 ' temp_coin_value [4:0] $end
+$var wire 1 # clk $end
+$var wire 2 & coin_in [1:0] $end
+$var wire 5 ' coin_value [4:0] $end
+$var wire 1 % rst_n $end
+$var reg 1 " coin_valid $end
+$var reg 2 ( prev_coin_in [1:0] $end
+$var reg 5 ) temp_coin_value [4:0] $end
 $upscope $end
 $upscope $end
 $enddefinitions $end
@@ -26,52 +29,95 @@ $dumpall
 $end
 #0
 $dumpvars
+b0 )
+b11 (
 b0 '
-b0 &
-bx %
-0$
-bx #
+b11 &
+0%
+b11 $
+0#
 0"
 b0 !
 $end
-#5
-1"
-#10
-0"
-b0 #
-b0 %
-1$
-#15
-b1 !
-b1 &
-b1 '
-1"
-#20
-0"
-b1 #
-b1 %
-#25
-b101 !
-b101 &
-b101 '
-1"
-#30
-0"
-b10 #
-b10 %
-#35
-b1010 !
-b1010 &
-b1010 '
-1"
-#40
-0"
-b11 #
-b11 %
-#45
-b0 !
+#5000
+1#
+#10000
+0#
+#12000
+1%
+#15000
+1#
+#20000
+0#
+#22000
+b0 $
 b0 &
-b0 '
+#25000
+b0 (
 1"
-#50
+b1 !
+b1 '
+b1 )
+1#
+#30000
+0#
+#32000
+b11 $
+b11 &
+#35000
+b11 (
 0"
+1#
+#40000
+0#
+#42000
+b1 $
+b1 &
+#45000
+b1 (
+1"
+b101 !
+b101 '
+b101 )
+1#
+#50000
+0#
+#52000
+b11 $
+b11 &
+#55000
+b11 (
+0"
+1#
+#60000
+0#
+#62000
+b10 $
+b10 &
+#65000
+b10 (
+1"
+b1010 !
+b1010 '
+b1010 )
+1#
+#70000
+0#
+#72000
+b11 $
+b11 &
+#75000
+b11 (
+0"
+1#
+#80000
+0#
+#85000
+1#
+#90000
+0#
+#95000
+1#
+#100000
+0#
+#102000

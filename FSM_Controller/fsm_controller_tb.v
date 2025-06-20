@@ -1,97 +1,106 @@
 `timescale 1ns/1ps
 `include "fsm_controller.v"
+
 module fsm_controller_tb;
 
-    // Inputs
+    // Clock và reset
     reg clk;
     reg rst_n;
+
+    // Input của FSM
     reg cancel;
     reg [1:0] product_sell;
-    reg enough_money;
+    reg total_amount_done;
     reg timeout_flag;
-    reg product_dispense_done;
-    reg change_dispense_done;
+    reg coin_value_in;
+    reg product_selector_done;
+    reg change_calculator_done;
 
-    // Outputs
+    // Output
     wire [2:0] state_out;
-    wire signal_display_controller;
-    wire display_status_en;
-    wire display_amount_en;
-    wire signal_change_calculator;
-    wire change_dispense_en;
-    wire product_dispense_en;
-    wire signal_product_selector;
+    wire change_calculator_en;
+    wire product_selector_en;
+    wire [7:0] status_diplay;
+    wire [3:0] led_indicators;
     wire [1:0] start_timer;
 
     // Instantiate DUT
-    fsm_controller uut (
+    fsm_controller dut (
         .clk(clk),
         .rst_n(rst_n),
         .cancel(cancel),
         .product_sell(product_sell),
-        .enough_money(enough_money),
+        .total_amount_done(total_amount_done),
         .timeout_flag(timeout_flag),
-        .product_dispense_done(product_dispense_done),
-        .change_dispense_done(change_dispense_done),
+        .coin_value_in(coin_value_in),
+        .product_selector_done(product_selector_done),
+        .change_calculator_done(change_calculator_done),
         .state_out(state_out),
-        .signal_display_controller(signal_display_controller),
-        .display_status_en(display_status_en),
-        .display_amount_en(display_amount_en),
-        .signal_change_calculator(signal_change_calculator),
-        .change_dispense_en(change_dispense_en),
-        .product_dispense_en(product_dispense_en),
-        .signal_product_selector(signal_product_selector),
+        .change_calculator_en(change_calculator_en),
+        .product_selector_en(product_selector_en),
+        .status_diplay(status_diplay),
+        .led_indicators(led_indicators),
         .start_timer(start_timer)
     );
 
-    // Clock generator
-    always #5 clk = ~clk;
+    // Clock generation
+    always #5 clk = ~clk; // 100MHz
 
     initial begin
         $dumpfile("fsm_controller_tb.vcd");
-        $dumpvars(0,fsm_controller_tb);
-    end
+        $dumpvars(0, fsm_controller_tb);
 
-    initial begin
-        // Initialize inputs
+        // Initial values
         clk = 0;
         rst_n = 0;
         cancel = 0;
         product_sell = 2'b00;
-        enough_money = 0;
+        total_amount_done = 0;
         timeout_flag = 0;
-        product_dispense_done = 0;
-        change_dispense_done = 0;
+        coin_value_in = 0;
+        product_selector_done = 0;
+        change_calculator_done = 0;
 
-        // Reset pulse
-        #10 rst_n = 1;
-
-        // Wait for FSM to go to WAIT_COIN
+        // Reset
         #10;
+        rst_n = 1;
 
-        // Enough money inserted
-        enough_money = 1;
-        #10 enough_money = 0;
+        // Chờ FSM chuyển từ IDLE → WAIT_COIN
+        #20;
 
-        // Wait for SELECT_PRODUCT
+        // Nhét xu lần 1 → kích hoạt timer
+        coin_value_in = 1;
         #10;
+        coin_value_in = 0;
 
-        // Simulate user choosing product, trigger dispense
-        product_dispense_done = 1;
+        // Nhét xu lần 2 → reset lại timer
+        #30;
+        coin_value_in = 1;
+        #10;
+        coin_value_in = 0;
+
+        // Người dùng chọn sản phẩm → total_amount_done
+        #20;
+        total_amount_done = 1;
+        #10;
+        total_amount_done = 0;
+
+        // Kích hoạt product selector, chờ timeout
+        #10;
         timeout_flag = 1;
+        product_selector_done = 1;
         #10;
-        product_dispense_done = 0;
         timeout_flag = 0;
+        product_selector_done = 0;
 
-        // Simulate change dispense done
-        change_dispense_done = 1;
-        #10 change_dispense_done = 0;
+        // FSM sang DISPENSE_PRODUCT rồi tự chuyển sang CHANGE_CALCULATOR
+        #20;
+        change_calculator_done = 1;
+        #10;
+        change_calculator_done = 0;
 
-        // Back to IDLE
-        #40;
-
- 
-
+        // Kết thúc mô phỏng
+        #50;
         $finish;
     end
 

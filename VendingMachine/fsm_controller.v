@@ -8,7 +8,7 @@ module fsm_controller #(
     input wire clk,
     input wire rst_n,
     input wire cancel,
-    input wire [1:0] product_sell,
+    input wire [1:0] product_sel,
     input wire total_amount_done,
     input wire timeout_flag,
     input wire coin_value_in,
@@ -57,7 +57,7 @@ module fsm_controller #(
             SELECT_PRODUCT: begin
                 if (cancel)
                     next_state = IDLE;
-                else if (product_selector_done && timeout_flag)
+                else if (product_selector_done || timeout_flag)
                     next_state = DISPENSE_PRODUCT;
                 else
                     next_state = SELECT_PRODUCT;
@@ -86,7 +86,7 @@ module fsm_controller #(
         state_out              = state;
         change_calculator_en   = 0;
         product_selector_en    = 0;
-        start_timer            = 2'b11;
+        start_timer            = 2'b00;
         led_indicators         = 4'b0000;
         status_display          = 8'h2D;  // "-" mặc định
 
@@ -101,15 +101,18 @@ module fsm_controller #(
                 status_display   = 8'h57; // 'W' - Wait coin
 
                 if (coin_value_in) begin
-                    start_timer = 2'b00; // Reset 30s timer khi nhét xu
+                    start_timer = 2'b01; // Reset 30s timer khi nhét xu
                 end
+
+                
+
             end
 
             SELECT_PRODUCT: begin
                 led_indicators      = 4'b0010;
                 status_display       = 8'h53; // 'S' - Select product
                 product_selector_en = 1;
-                start_timer         = 2'b01; // 30s chọn SP
+                start_timer         = 2'b10; // 30s chọn SP
             end
 
             DISPENSE_PRODUCT: begin
@@ -120,9 +123,9 @@ module fsm_controller #(
 
             CHANGE_CALCULATOR: begin
                 led_indicators        = 4'b0100;
-                status_diplay         = 8'h52; // 'R' - Return change
+                status_display         = 8'h52; // 'R' - Return change
                 change_calculator_en  = 1;
-                start_timer           = 2'b10; // 5s chờ nhận tiền thừa
+                start_timer           = 2'b11; // 5s chờ nhận tiền thừa
             end
         endcase
     end

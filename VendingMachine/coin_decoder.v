@@ -12,10 +12,10 @@ module coin_decoder(
         if (!rst_n) begin
             coin_value   <= 5'd0;
             coin_valid   <= 1'b0;
-            prev_coin_in <= 2'b11; // trạng thái "không có xu"
+            prev_coin_in <= 2'b00; // trạng thái "không có xu"
         end else begin
             // Phát hiện cạnh lên từ 11 -> 00/01/10
-            if (coin_in != 2'b11 && prev_coin_in == 2'b11) begin
+            if (coin_in != 2'b00 && prev_coin_in == 2'b00) begin
                 case (coin_in)
                     2'b01: coin_value <= 5'd1;
                     2'b10: coin_value <= 5'd5;

@@ -1,14 +1,16 @@
 `timescale 1ns/1ps
 `include "total_amount.v"
-
 module total_amount_tb;
 
-    reg clk;
-    reg rst_n;
-    reg cancel;
+    // Inputs
+    reg clk, rst_n, cancel, coin_valid, timeout_flag;
     reg [4:0] coin_value;
-    wire [4:0] current_amount;
+    reg [1:0] product_sel;
 
+    // Outputs
+    wire [4:0] current_amount;
+    wire total_amount_done;
+    wire coin_value_in;
 
     // Instantiate the total_amount module
     total_amount uut (
@@ -16,58 +18,70 @@ module total_amount_tb;
         .rst_n(rst_n),
         .cancel(cancel),
         .coin_value(coin_value),
-        .current_amount(current_amount)
+        .coin_valid(coin_valid),
+        .product_sel(product_sel),
+        .timeout_flag(timeout_flag),
+        .current_amount(current_amount),
+        .total_amount_done(total_amount_done),
+        .coin_value_in(coin_value_in)
     );
 
     // Clock generation
-    initial begin
-        clk = 0;
-        forever #5 clk = ~clk; // 10 ns clock period
-    end
+    always #5 clk = ~clk; // 10ns period
 
     initial begin
         $dumpfile("total_amount_tb.vcd");
-        $dumpvars(0, total_amount_tb);
+        $dumpvars(0,total_amount_tb);
     end
 
-    // Display monitor
-    initial begin
-        $display("Time\tclk\trst_n\tcancel\tcoin_value\tcurrent_amount");
-        $monitor("%4dns\t%b\t%b\t%b\t%2d\t\t%2d",
-                 $time, clk, rst_n, cancel, coin_value, current_amount);
-    end
 
-    // Test sequence
     initial begin
-        rst_n = 0; // Reset the system
+        // Initial values
+        clk = 0;
+        rst_n = 0;
         cancel = 0;
         coin_value = 5'd0;
+        coin_valid = 0;
+        product_sel = 2'b00;
+        timeout_flag = 0;
 
-        #10 rst_n = 1; // Release reset
+        // Reset
+        #12; rst_n = 1;
 
-        // Test adding coins
-        coin_value = 5'd1; // Add 1đ
-        #10;
+        // --- Test 1: Insert 5đ ---
+        #10; coin_value = 5'd5; coin_valid = 1;
+        #10; coin_valid = 0;
 
-        coin_value = 5'd5; // Add 5đ
-        #10;
+        // --- Test 2: Insert 10đ ---
+        #10; coin_value = 5'd10; coin_valid = 1;
+        #10; coin_valid = 0;
 
-        coin_value = 5'd10; // Add 10đ
-        #10;
+        // --- Test 3: Insert 1đ ---
+        #10; coin_value = 5'd1; coin_valid = 1;
+        #10; coin_valid = 0;
 
-        // Test cancel operation
-        cancel = 1; // Trigger cancel
-        #10;
-        
-        cancel = 0; // Release cancel
+        // --- Test 4: Select product ---
+        #10; product_sel = 2'b01;
+       
 
-        // Add more coins after cancel
-        coin_value = 5'd2; // Add 2đ
-        #10;
+        // --- Test 5: Timeout ---
+        #10; timeout_flag = 1;
+        #10; timeout_flag = 0;
 
-        coin_value = 5'd3; // Add 3đ
-        #10;
+        // --- Test 6: Cancel ---
+        #10; cancel = 1;
+        #10; cancel = 0;
 
-        $finish; // End simulation
+        #20;
+        $finish;
     end
+
+    initial begin
+        $monitor("T=%0t | coin_value=%2d | coin_valid=%b | coin_value_in=%b | temp_amt=%2d | curr_amt=%2d | done=%b | product_sel=%b | cancel=%b | timeout=%b",
+                 $time, coin_value, coin_valid, coin_value_in,
+                 uut.temp_current_amount,
+                 current_amount, total_amount_done,
+                 product_sel, cancel, timeout_flag);
+    end
+
 endmodule

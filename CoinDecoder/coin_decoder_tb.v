@@ -1,55 +1,74 @@
-`timescale 1ps/1ps
+`timescale 1ns/1ps
 `include "coin_decoder.v"
-
 module coin_decoder_tb;
 
+    // Khai báo tín hiệu testbench
     reg clk;
     reg rst_n;
     reg [1:0] coin_in;
-    wire [3:0] coin_value;
+    wire [4:0] coin_value;
+    wire coin_valid;
 
-    // Instantiate the coin_decoder module
+    // Gọi module coin_decoder
     coin_decoder uut (
         .clk(clk),
         .rst_n(rst_n),
         .coin_in(coin_in),
-        .coin_value(coin_value)
+        .coin_value(coin_value),
+        .coin_valid(coin_valid)
     );
 
-    // Clock generation
-    initial begin
-        clk = 0;
-        forever #5 clk = ~clk; // 10 time units clock period
-    end
+    // Clock 10ns
+    always #5 clk = ~clk;
 
     initial begin
         $dumpfile("coin_decoder_tb.vcd");
-        $dumpvars(0, coin_decoder_tb);
+        $dumpvars(0,coin_decoder_tb);
     end
 
-    // Test sequence
     initial begin
-        rst_n = 0; // Reset the system
-        #10;
-        rst_n = 1; // Release reset
+        // Khởi tạo
+        clk = 0;
+        rst_n = 0;
+        coin_in = 2'b11;  // Không có xu
+        #12;
 
-        // Test cases
-        coin_in = 2'b00; // Input 1đ
+        rst_n = 1;  // Bỏ reset
         #10;
-        $display("Coin in: %b, Coin value: %d", coin_in, coin_value);
 
-        coin_in = 2'b01; // Input 5đ
+        // ----- Test xu 1đ (2'b00) -----
+        $display(">>> Test xu 1đ");
+        coin_in = 2'b00;   // Đưa xu vào
         #10;
-        $display("Coin in: %b, Coin value: %d", coin_in, coin_value);
-
-        coin_in = 2'b10; // Input 10đ
+        coin_in = 2'b11;   // Rút xu ra (trở về trạng thái nghỉ)
         #10;
-        $display("Coin in: %b, Coin value: %d", coin_in, coin_value);
 
-        coin_in = 2'b11; 
+        // ----- Test xu 5đ (2'b01) -----
+        $display(">>> Test xu 5đ");
+        coin_in = 2'b01;
         #10;
-        $display("Coin in: %b, Coin value: %d", coin_in, coin_value);
+        coin_in = 2'b11;
+        #10;
 
-        $finish; // End simulation
+        // ----- Test xu 10đ (2'b10) -----
+        $display(">>> Test xu 10đ");
+        coin_in = 2'b10;
+        #10;
+        coin_in = 2'b11;
+        #10;
+
+        // ----- Test không có xu -----
+        $display(">>> Test không có xu");
+        coin_in = 2'b11;
+        #20;
+
+        $finish;
     end
+
+    // Theo dõi tín hiệu
+    initial begin
+        $monitor("Time: %t | coin_in = %b | coin_value = %d | coin_valid = %b", 
+                  $time, coin_in, coin_value, coin_valid);
+    end
+
 endmodule

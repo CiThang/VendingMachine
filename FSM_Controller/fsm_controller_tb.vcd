@@ -1,0 +1,266 @@
+$date
+	Fri Jun 20 08:56:55 2025
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module fsm_controller_tb $end
+$var wire 8 ! status_diplay [7:0] $end
+$var wire 3 " state_out [2:0] $end
+$var wire 2 # start_timer [1:0] $end
+$var wire 1 $ product_selector_en $end
+$var wire 4 % led_indicators [3:0] $end
+$var wire 1 & change_calculator_en $end
+$var reg 1 ' cancel $end
+$var reg 1 ( change_calculator_done $end
+$var reg 1 ) clk $end
+$var reg 1 * coin_value_in $end
+$var reg 1 + product_selector_done $end
+$var reg 2 , product_sell [1:0] $end
+$var reg 1 - rst_n $end
+$var reg 1 . timeout_flag $end
+$var reg 1 / total_amount_done $end
+$scope module dut $end
+$var wire 1 ' cancel $end
+$var wire 1 ( change_calculator_done $end
+$var wire 1 ) clk $end
+$var wire 1 * coin_value_in $end
+$var wire 1 + product_selector_done $end
+$var wire 2 0 product_sell [1:0] $end
+$var wire 1 - rst_n $end
+$var wire 1 . timeout_flag $end
+$var wire 1 / total_amount_done $end
+$var parameter 3 1 CHANGE_CALCULATOR $end
+$var parameter 3 2 DISPENSE_PRODUCT $end
+$var parameter 3 3 IDLE $end
+$var parameter 3 4 SELECT_PRODUCT $end
+$var parameter 3 5 WAIT_COIN $end
+$var reg 1 & change_calculator_en $end
+$var reg 4 6 led_indicators [3:0] $end
+$var reg 3 7 next_state [2:0] $end
+$var reg 1 $ product_selector_en $end
+$var reg 2 8 start_timer [1:0] $end
+$var reg 3 9 state [2:0] $end
+$var reg 3 : state_out [2:0] $end
+$var reg 8 ; status_diplay [7:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b1 5
+b10 4
+b0 3
+b100 2
+b11 1
+$end
+#0
+$dumpvars
+b1001001 ;
+b0 :
+b0 9
+b11 8
+b1 7
+b0 6
+b0 0
+0/
+0.
+0-
+b0 ,
+0+
+0*
+0)
+0(
+0'
+0&
+b0 %
+0$
+b11 #
+b0 "
+b1001001 !
+$end
+#5000
+1)
+#10000
+0)
+1-
+#15000
+b1 %
+b1 6
+b1010111 !
+b1010111 ;
+b1 "
+b1 :
+b1 9
+1)
+#20000
+0)
+#25000
+1)
+#30000
+b0 #
+b0 8
+b1010111 !
+b1010111 ;
+b1 %
+b1 6
+0)
+1*
+#35000
+1)
+#40000
+b1010111 !
+b1010111 ;
+b1 %
+b1 6
+b11 #
+b11 8
+0)
+0*
+#45000
+1)
+#50000
+0)
+#55000
+1)
+#60000
+0)
+#65000
+1)
+#70000
+b0 #
+b0 8
+b1010111 !
+b1010111 ;
+b1 %
+b1 6
+0)
+1*
+#75000
+1)
+#80000
+b1010111 !
+b1010111 ;
+b1 %
+b1 6
+b11 #
+b11 8
+0)
+0*
+#85000
+1)
+#90000
+0)
+#95000
+1)
+#100000
+b10 7
+0)
+1/
+#105000
+b1 #
+b1 8
+1$
+b1010011 !
+b1010011 ;
+b10 %
+b10 6
+b10 "
+b10 :
+b10 9
+1)
+#110000
+0)
+0/
+#115000
+1)
+#120000
+b100 7
+0)
+1+
+1.
+#125000
+b1000100 !
+b1000100 ;
+b11 %
+b11 6
+b11 #
+b11 8
+0$
+b100 "
+b100 :
+b11 7
+b100 9
+1)
+#130000
+b11 7
+0)
+0+
+0.
+#135000
+b10 #
+b10 8
+1&
+b1010010 !
+b1010010 ;
+b100 %
+b100 6
+b11 "
+b11 :
+b11 9
+1)
+#140000
+0)
+#145000
+1)
+#150000
+b0 7
+0)
+1(
+#155000
+b1001001 !
+b1001001 ;
+b0 %
+b0 6
+b11 #
+b11 8
+0&
+b0 "
+b0 :
+b1 7
+b0 9
+1)
+#160000
+b1 7
+0)
+0(
+#165000
+b1 %
+b1 6
+b1010111 !
+b1010111 ;
+b1 "
+b1 :
+b1 9
+1)
+#170000
+0)
+#175000
+1)
+#180000
+0)
+#185000
+1)
+#190000
+0)
+#195000
+1)
+#200000
+0)
+#205000
+1)
+#210000
+0)
